@@ -1,0 +1,109 @@
+.form-select {
+  width: 140px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.btn-color {
+  background-color: #ff5237;
+}
+
+.btn-closed {
+  background-color: #ff5237;
+  border-radius: 15px;
+  color: white !important;
+  font-weight: 500;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.info-location {
+  color: black;
+  text-align: justify;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  /* Asegura que el contenedor tome el 100% de altura disponible */
+}
+
+/* Aumentar el tamaño del icono */
+.icon-size {
+  font-size: 3rem;
+  /* Ajusta el tamaño según sea necesario */
+}
+
+.table-responsive {
+  overflow-x: x;
+  /* Permite el desplazamiento horizontal */
+  scrollbar-width: thin;
+  /* Ajusta el ancho del scrollbar */
+  -webkit-overflow-scrolling: touch;
+  /* Añade scroll suave en iOS */
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+@media (max-width: 768px) {
+  .container-fluid{
+    padding: 0 !important;
+    margin-top: 15px;
+  }
+  
+  .table thead {
+    display: none;
+    /* Oculta el encabezado en pantallas pequeñas */
+  }
+
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+
+  .table tr {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .table td {
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+    background-color: #f9f9f9;
+  }
+}

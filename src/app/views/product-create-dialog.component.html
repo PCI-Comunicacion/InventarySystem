@@ -1,0 +1,73 @@
+<div [ngClass]="{ 'scrollable-content': !isDesktop }">
+    <div class="card">
+      <div class="card-header bg-dark d-flex justify-content-between align-items-center">
+        <h6 class="text-light mt-2">{{ accion | uppercase }} PRODUCTO</h6>
+        <i class="fa-solid fa-xmark text-danger" style="cursor: pointer;" (click)="cancelar()"></i>
+      </div>
+      <div class="card-body">
+        <div class="d-flex flex-row mt-1">
+          <div class="col-lg-12 mb-4">
+            <form [formGroup]="productForm">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="name" class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" id="name" formControlName="name"
+                      placeholder="" autocomplete="new-name" />
+                  </div>
+                  <!--<div class="col-md-6 mb-3">
+                    <label for="description" class="form-label">Descripci&oacute;n:</label>
+                    <input type="text" class="form-control" id="description" formControlName="description"
+                      placeholder="" autocomplete="new-description" />
+                  </div>-->
+                  <div class="col-md-6 mb-3" *ngIf="btn === 'Editar'">
+                    <label for="nameCategory" class="form-label">Categor&iacute;a:</label>
+                    <input type="text" class="form-control" id="nameCategory" [disabled]="true"
+                      [value]="categorySelected" placeholder="Categoria" autocomplete="new-category" />
+                  </div>
+                  <div class="col-md-6 mb-3" *ngIf="btn !== 'Editar'">
+                    <label for="nameCategory" class="form-label">Categor&iacute;a:</label>
+                    <select class="form-select" aria-label="Default select example" formControlName="nameCategory">
+                      <option [value]="null" selected>Categor&iacute;a</option>
+                      <option *ngFor="let category of categoryList" [value]="category.id">
+                        {{ category.name }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="entryDate" class="form-label">Fecha de ingreso:</label>
+                    <input type="date" class="form-control" id="entryDate" formControlName="entryDate"
+                      placeholder="Fecha Ingreso" />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="price_purchase" class="form-label">Precio de compra:</label>
+                    <input oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                      type="text" class="form-control" id="price_purchase"
+                      formControlName="price_purchase" placeholder="" autocomplete="new-pricePurchase" />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="price_sale" class="form-label">Precio de venta:</label>
+                    <input oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                      type="text" class="form-control" id="price_sale" formControlName="price_sale"
+                      placeholder="" autocomplete="new-priceSale" />
+                  </div>
+                </div>
+                <div class="row align-items-center">
+                  <div class="col-12 col-md-12 mb-3 text-center mt-3" *ngIf="btn !== 'Actualizar'">
+                    <button class="btn btn-theme rounded-0" [disabled]="productForm.invalid" (click)="saveProduct()">
+                      <i class="fa-regular fa-floppy-disk"></i> {{ btn }}
+                    </button>
+                  </div>
+                  <div class="col-12 col-md-12 mb-3 text-center mt-3" *ngIf="btn === 'Actualizar'">
+                    <button class="btn btn-theme rounded-0" [disabled]="productForm.invalid" (click)="updateProduct()">
+                      <i class="fa-regular fa-floppy-disk"></i> {{ btn }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

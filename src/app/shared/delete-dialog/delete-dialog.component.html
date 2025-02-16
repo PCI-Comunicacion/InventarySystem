@@ -1,0 +1,17 @@
+<div class="card">
+    <div class="card-header bg-dark d-flex justify-content-between align-items-center">
+        <h5 class="text-light mt-2">ELIMINAR</h5>
+        <i class="fa-solid fa-xmark text-danger" style="cursor: pointer;" (click)="cancelar()"></i>
+    </div>
+    <div class="card-body">
+        <div mat-dialog-content class="font-semibold text-center mb-2">
+            ¿Estás seguro que deseas eliminar?
+        </div>
+    </div>
+    <div class="card-footer">
+        <div mat-dialog-actions class="flex justify-content-center">
+            <!-- <button mat-button (click)="cancelar()" class="flex-auto btn-cancelar">CANCELAR</button> -->
+            <button mat-button (click)="delete()" [mat-dialog-close]="'deleted'" class="btn btn-theme rounded-0">CONFIRMAR</button>
+        </div>
+    </div>
+</div>

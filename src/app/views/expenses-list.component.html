@@ -1,0 +1,139 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="mt-5">
+      <h6 *ngIf="noResults">No hay datos de Ordenes de Salida</h6>
+      <div class="table-responsive">
+        <table
+          mat-table
+          [dataSource]="dataSaleOrder"
+          matSort
+          class="mat-elevation-z8"
+          *ngIf="!noResults"
+        >
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header ngClass="bg-darkTheme">
+              Nro. de Orden
+            </th>
+            <td mat-cell *matCellDef="let element" ngClass="bg-body-theme-table">{{ element.id }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="customer">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header ngClass="bg-darkTheme">
+              Cliente
+            </th>
+            <td mat-cell *matCellDef="let element" ngClass="bg-body-theme-table">
+              {{ element.customerName }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="saleOrderDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header ngClass="bg-darkTheme">
+              Fecha Salida
+            </th>
+            <td mat-cell *matCellDef="let element" ngClass="bg-body-theme-table">
+              {{ element.saleOrderDate | dateFormat }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="observation">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header ngClass="bg-darkTheme">
+              Descripcion
+            </th>
+            <td mat-cell *matCellDef="let element" ngClass="bg-body-theme-table">
+              {{ element.observation }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header ngClass="bg-darkTheme">
+              Total
+            </th>
+            <td mat-cell *matCellDef="let element" ngClass="bg-body-theme-table">
+              {{ element.total | currency }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef ngClass="bg-darkTheme">
+              Detalle
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element; let i = index"
+              ngClass="bg-body-theme-table"
+            >
+              <a
+                class="pointer mx-2 bg-success d-flex align-items-center justify-content-center rounded-circle"
+                matTooltip="Ver Detalle"
+                (click)="openDetailOrderialog(element)"
+                style="color: #ffffff; width: 30px; height: 30px;"
+              >
+                <i class="fa-solid fa-file-lines"></i>
+              </a>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+
+        <mat-paginator
+          *ngIf="!noResults"
+          [pageSizeOptions]="[12]"
+          showFirstLastButtons
+          [ngStyle]="{ display: listSaleOrder.length > 0 ? 'block' : 'none' }"
+          class="custom-paginator"
+        ></mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #dialogTemplateDetails let-data>
+  <div class="card">
+    <div class="card-header bg-dark d-flex justify-content-between align-items-center">
+      <h6 class="text-light mt-2">DETALLE DE SALIDA</h6>
+      <i class="fa-solid fa-xmark text-danger" style="cursor: pointer;" (click)="closeDetailsOrderDialog()"></i>
+    </div>
+    <div class="card-body">
+      <mat-dialog-content class="info-location mt-2">
+        <table
+          mat-table
+          [dataSource]="selectedOrderSaleDetails"
+          class="mat-elevation-z8"
+          *ngIf="selectedOrderSaleDetails.length > 0"
+        >
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef ngClass="bg-darkTheme">ID</th>
+            <td mat-cell *matCellDef="let element" ngClass="bg-body-theme-table">{{ element.id }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="paymentMethod">
+            <th mat-header-cell *matHeaderCellDef ngClass="bg-darkTheme">M&eacute;todo de pago</th>
+            <td mat-cell *matCellDef="let element" ngClass="bg-body-theme-table">{{ element.paymentMethod }}</td>
+          </ng-container>
+    
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef ngClass="bg-darkTheme">Cantidad</th>
+            <td mat-cell *matCellDef="let element" ngClass="bg-body-theme-table">{{ element.stock }}</td>
+          </ng-container>
+    
+          <ng-container matColumnDef="unitPrice">
+            <th mat-header-cell *matHeaderCellDef ngClass="bg-darkTheme">Precio unitario</th>
+            <td mat-cell *matCellDef="let element" ngClass="bg-body-theme-table">
+              {{ element.unitPrice | currency }}
+            </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="product">
+            <th mat-header-cell *matHeaderCellDef ngClass="bg-darkTheme">Producto</th>
+            <td mat-cell *matCellDef="let element" ngClass="bg-body-theme-table">{{ element.product.name }}</td>
+          </ng-container>
+    
+          <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+        </table>
+      </mat-dialog-content>
+    </div>
+  </div>
+</ng-template>

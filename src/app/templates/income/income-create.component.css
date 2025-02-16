@@ -1,0 +1,57 @@
+.scrollable-content {
+    max-height: 80vh; 
+    overflow-y: auto; 
+    padding-right: 1rem;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #ff5237;
+    cursor: pointer;
+}
+  
+.close-button:hover {
+    color: #ff5237;
+}
+
+.example-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.example-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+
+.example-input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+mat-autocomplete {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 5px;
+}
+
+mat-option {
+    padding: 10px;
+}
+
+mat-option:hover {
+    background-color: #f1f1f1;
+}

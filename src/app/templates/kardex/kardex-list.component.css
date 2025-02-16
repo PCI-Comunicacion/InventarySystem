@@ -1,0 +1,18 @@
+.dialog-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-closed {
+    background-color: #ff5237;
+    color: white !important;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+    .container-fluid{
+        padding: 0 !important;
+        margin-top: 15px;
+    }
+}
+

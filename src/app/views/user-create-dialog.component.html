@@ -1,0 +1,78 @@
+<div [ngClass]="{'scrollable-content': !isDesktop}">
+  <div class="card">
+    <div class="card-header bg-dark d-flex justify-content-between align-items-center">
+      <h6 class="text-light mt-2">{{accion | uppercase }} USUARIO</h6>
+      <i class="fa-solid fa-xmark text-danger" style="cursor: pointer;" (click)="cancelar()"></i>
+    </div>
+    <div class="card-body">
+      <div class="d-flex flex-row mt-4">
+        <div class="col-lg-12 mb-4">
+          <form [formGroup]="userForm">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="name" class="form-label">Nombre </label>
+                  <input
+                    oninput="this.value = this.value.replace(/[^A-Za-zñÑáéíóúÁÉÍÓÚ\s ]/g, '').replace(/(\..*)\./g, '$1');"
+                    type="text" class="form-control" formControlName="name" id="name" placeholder=""
+                    autocomplete="new_name">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" formControlName="email" id="email" placeholder=""
+                    autocomplete="new_email">
+                </div>
+                <!--<div class="col-md-6 mb-3" *ngIf="btn === 'Editar'">
+                  <label for="role" class="form-label">Rol</label>
+                  <input type="text" class="form-control" id="role" [disabled]="true" [value]="roleSelected"
+                    placeholder="Rol" autocomplete="new-role">
+                </div>
+                <div class="col-md-6 mb-3" *ngIf="btn !== 'Editar'">
+                  <label for="role" class="form-label">Rol</label>
+                  <select class="form-select" aria-label="Default select example" formControlName="role">
+                    <option [value]="null" selected>Rol</option>
+                    <option *ngFor="let role of roleList" [value]="role.id">
+                      {{ role.name }}
+                    </option>
+                  </select>
+                </div>-->
+                <div class="col-md-6 mb-3" *ngIf="btn === 'Editar'">
+                  <label for="status" class="form-label">Estado</label>
+                  <input type="text" class="form-control" id="status" [disabled]="true" [value]="statusSelected"
+                    placeholder="Estado" autocomplete="new_status">
+                </div>
+                <div class="col-md-6 mb-3" *ngIf="btn !== 'Editar'">
+                  <label for="status" class="form-label">Estado</label>
+                  <select class="form-select" aria-label="Default select example" formControlName="status">
+                    <option [value]="null" selected>Estado</option>
+                    <option *ngFor="let status of statusList" [value]="status.id">
+                      {{ status.name }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-6 mb-3" *ngIf="btn !== 'Editar'">
+                  <label for="position" class="form-label">Cargo</label>
+                  <input
+                    oninput="this.value = this.value.replace(/[^A-Za-zñÑáéíóúÁÉÍÓÚ\s ]/g, '').replace(/(\..*)\./g, '$1');"
+                    type="text" class="form-control" formControlName="position" id="position"
+                    placeholder="" autocomplete="new_position">
+                </div>
+                <div class="col-md-6 mb-3" *ngIf="btn !== 'Editar'">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" formControlName="password" id="password"
+                    placeholder="" autocomplete="new_password">
+                </div>
+                <div class="col-12 col-md-12 mb-3 text-center mt-3" *ngIf="btn !== 'Actualizar'">
+                  <button class="btn btn-theme rounded-0" (click)="saveUser()"> <i class="fa-regular fa-floppy-disk"></i> {{btn}} </button>
+                </div>
+                <div class="col-12 col-md-12 mb-3 text-center mt-3" *ngIf="btn === 'Actualizar'">
+                  <button class="btn btn-theme rounded-0" (click)="updateUser()"> <i class="fa-regular fa-floppy-disk"></i> {{btn}} </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

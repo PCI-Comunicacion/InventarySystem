@@ -1,0 +1,106 @@
+<div class="container-fluid">
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <div id="chart" class="border-chart" *ngIf="!loadingChart1">
+          <apx-chart
+            [series]="chartOptionsSales.series!"
+            [chart]="chartOptionsSales.chart!"
+            [xaxis]="chartOptionsSales.xaxis!"
+            [yaxis]="chartOptionsSales.yaxis!"
+            [dataLabels]="chartOptionsSales.dataLabels!"
+            [stroke]="chartOptionsSales.stroke!"
+            [title]="chartOptionsSales.title!"
+            [grid]="chartOptionsSales.grid!"
+            [fill]="chartOptionsSales.fill!"
+          ></apx-chart>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div id="chart2" class="border-chart" *ngIf="!loadingChart2">
+          <apx-chart
+            [series]="chartOptionsPurchase.series!"
+            [chart]="chartOptionsPurchase.chart!"
+            [xaxis]="chartOptionsPurchase.xaxis!"
+            [yaxis]="chartOptionsPurchase.yaxis!"
+            [dataLabels]="chartOptionsPurchase.dataLabels!"
+            [stroke]="chartOptionsPurchase.stroke!"
+            [title]="chartOptionsPurchase.title!"
+            [grid]="chartOptionsPurchase.grid!"
+            [fill]="chartOptionsPurchase.fill!"
+          ></apx-chart>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div id="chart3" class="border-chart" *ngIf="!loadingChart3">
+          <apx-chart
+            [series]="chartOptionsProfit.series!"
+            [chart]="chartOptionsProfit.chart!"
+            [xaxis]="chartOptionsProfit.xaxis!"
+            [yaxis]="chartOptionsProfit.yaxis!"
+            [dataLabels]="chartOptionsProfit.dataLabels!"
+            [stroke]="chartOptionsProfit.stroke!"
+            [title]="chartOptionsProfit.title!"
+            [grid]="chartOptionsProfit.grid!"
+            [fill]="chartOptionsProfit.fill!"
+          ></apx-chart>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div id="donut-chart" *ngIf="!loadingChart4">
+              <apx-chart
+                [series]="donutChartOptions.series!"
+                [chart]="donutChartOptions.chart!"
+                [labels]="donutChartOptions.labels!"
+                [plotOptions]="donutChartOptions.plotOptions!"
+                [dataLabels]="donutChartOptions.dataLabels!"
+                [title]="donutChartOptions.title!"
+                [legend]="donutChartOptions.legend!"
+              ></apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card bg-success">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <h2 class="card-title"><b>Producto con m&aacute;s stock</b></h2>
+                    <h4><b>Producto:</b>  {{ nameProductMoreStock }} </h4>
+                    <h5><b>Cantidad:</b> {{ quantityProductMoreStock }} </h5>
+                  </div>
+                  <div class="col-md-4 mt-2" style="font-size: 6rem;">
+                    <i class="fa-solid fa-arrow-trend-up"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-12">
+            <div class="card bg-danger">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <h2 class="card-title"><b>Producto con menos stock</b></h2>
+                    <h4><b>Producto:</b> {{ nameProductLessStock }} </h4>
+                    <h5><b>Cantidad:</b> {{ quantityProductLessStock }} </h5>
+                  </div>
+                  <div class="col-md-4 mt-2" style="font-size: 6rem;">
+                    <i class="fa-solid fa-arrow-trend-down"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

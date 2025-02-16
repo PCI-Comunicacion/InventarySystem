@@ -1,0 +1,13 @@
+.btn-cancelar{
+    background-color: #6d6e7e;
+    border-radius: 15px; 
+    color: white !important;
+    font-weight: 500;
+}
+
+.btn-confirmar{
+    background-color: #ff5237;
+    border-radius: 15px; 
+    color: white !important;
+    font-weight: 500;
+}

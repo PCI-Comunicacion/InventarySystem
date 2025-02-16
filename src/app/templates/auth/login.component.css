@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.forgotPassword {
+    font-size: 12px;
+
+    .no-underline{
+        text-decoration: none;
+    }
+}
+
+.card{
+    border-radius: 0px;
+}

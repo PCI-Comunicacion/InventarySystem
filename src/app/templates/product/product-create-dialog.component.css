@@ -1,0 +1,12 @@
+.scrollable-content {
+    max-height: 80vh; /* Altura máxima del contenido */
+    overflow-y: auto; /* Permite el desplazamiento vertical */
+}
+
+.is-invalid {
+    border-color: #dc3545; 
+}
+  
+.invalid-feedback {
+    color: #dc3545;
+}

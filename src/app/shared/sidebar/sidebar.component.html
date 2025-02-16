@@ -1,0 +1,92 @@
+<div class="page-wrapper chiller-theme toggled" [ngClass]="{'toggled': sidebarToggled}">
+    <a id="show-sidebar" class="btn btn-sm btn-dark" *ngIf="!sidebarToggled" (click)="toggleSidebar()">
+      <i class="fa-solid fa-bars"></i>
+    </a>
+
+    <nav id="sidebar" class="sidebar-wrapper">
+      <div class="sidebar-content">
+        <div class="sidebar-brand">
+          <a id="close-sidebar" (click)="closeToggleSidebar()">
+            <i class="fa-solid fa-bars fa-rotate-90"></i>
+          </a>
+          <img class="mt-2" src="../../../assets/slogan.png" alt="logo" width="100px">
+        </div>
+        <div class="sidebar-header">
+          <div class="user-pic">
+            <img class="img-responsive img-rounded mt-4" src="{{image_profile}}"
+              alt="User picture">
+          </div>
+          <div class="user-info">
+            <div class="user-info">
+              <span class="user-name"><strong class="highlight">Usuario</strong> {{nameUser}}</span>
+              <span class="user-role"><strong class="highlight">Rol</strong> {{position}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="sidebar-menu b-0">
+          <ul>
+            <li class="header-menu mt-2">
+              <span>MEN&Uacute;</span>
+            </li>
+            <li *ngIf="isAdmin()">
+              <a [routerLink]="['/dashboard']" routerLinkActive="active-link">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span style="font-weight: bold;">Dashboard</span>
+              </a>
+            </li>
+            <li *ngIf="isAdmin()">
+              <a [routerLink]="['/user']" routerLinkActive="active-link">
+                <i class="fa-solid fa-users-gear"></i>
+                <span style="font-weight: bold;">Usuarios</span>
+              </a>
+            </li>
+            <li *ngIf="!isAdmin()">
+              <a [routerLink]="['/product']" routerLinkActive="active-link">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                <span style="font-weight: bold;">Gesti&oacute;n de productos</span>
+              </a>
+            </li>
+            <li *ngIf="!isAdmin()">
+              <a [routerLink]="['/supplier']" routerLinkActive="active-link">
+                <i class="fa-solid fa-dolly"></i>
+                <span style="font-weight: bold;">Gesti&oacute;n de proveedores</span>
+              </a>
+            </li>
+            <li *ngIf="!isAdmin()">
+              <a [routerLink]="['/customer']" routerLinkActive="active-link">
+                <i class="fa-solid fa-users-rectangle"></i>
+                <span style="font-weight: bold;">Gesti&oacute;n de clientes</span>
+              </a>
+            </li>
+            <li *ngIf="!isAdmin()">
+              <a [routerLink]="['/order']" routerLinkActive="active-link">
+                <i class="fa-solid fa-file"></i>
+                <span style="font-size: inherit; font-weight: bold;">Entradas y salidas</span>
+              </a>
+            </li>
+            <li *ngIf="isAdmin()">
+                <a [routerLink]="['/kardex']" routerLinkActive="active-link"> 
+                  <i class="fa-solid fa-file-lines"></i>
+                  <span style="font-weight: bold;">Movimientos</span>
+                </a>
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar-menu footer">
+          <ul>
+            <li>
+              <a (click)="logOut()" class="pointer">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Cerrar Sesión</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="page-content">
+      <div class="container-fluid">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div> 

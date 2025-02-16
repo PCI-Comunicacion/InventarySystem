@@ -1,0 +1,95 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-flex">
+      <div class="col-2 col-md-2">
+        <button class="btn btn-add rounded-0 " (click)="openCreateCustomerDialog()">
+          <i class="fa-solid fa-circle-plus"></i>
+          <span *ngIf="isDesktop"> &nbsp; Agregar cliente</span>
+        </button>
+      </div>
+      <div class="col-7 col-md-2">
+        <div class="input-group input-group-custom">
+          <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+          <input type="text" [(ngModel)]="searchTerm" (keyup)="applyFilter($event)" class="form-control" placeholder="Buscar..." aria-label="Buscar..." aria-describedby="basic-addon1">
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <h6 *ngIf="noResults">No hay datos de Clientes</h6>
+      <div class="table-responsive">
+        <table
+          mat-table
+          [dataSource]="dataCustomer"
+          class="mat-elevation-z8"
+          matSort
+          *ngIf="!noResults"
+          
+        >
+          <ng-container matColumnDef="identification">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header ngClass="bg-darkTheme">Nro. de c&eacute;dula</th>
+            <td mat-cell *matCellDef="let element" ngClass="bg-body-theme-table">
+              {{ element.identification }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header ngClass="bg-darkTheme">Nombre</th>
+            <td mat-cell *matCellDef="let element" ngClass="bg-body-theme-table">{{ element.name }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="surname">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header ngClass="bg-darkTheme">Apellido</th>
+            <td mat-cell *matCellDef="let element" ngClass="bg-body-theme-table">{{ element.surname }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header ngClass="bg-darkTheme">Direcci&oacute;n</th>
+            <td mat-cell *matCellDef="let element" ngClass="bg-body-theme-table">{{ element.address }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="phone_number">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header ngClass="bg-darkTheme">Nro. de tel&eacute;fono</th>
+            <td mat-cell *matCellDef="let element" ngClass="bg-body-theme-table">
+              {{ element.phone_number }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header ngClass="bg-darkTheme">Email</th>
+            <td mat-cell *matCellDef="let element" ngClass="bg-body-theme-table">{{ element.email }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef ngClass="bg-darkTheme">Editar</th>
+            <td
+              mat-cell
+              *matCellDef="let element; let i = index"
+              ngClass="bg-body-theme-table"
+            >
+              <a
+                class="pointer mx-2 bg-success d-flex align-items-center justify-content-center rounded-circle"
+                matTooltip="Editar"
+                (click)="openEditDialog(element, element.id)"
+                style="color: #ffffff; width: 30px; height: 30px;"
+              >
+                <i class="fa-solid fa-pen"></i>
+              </a>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+
+        <mat-paginator
+          *ngIf="!noResults"
+          [pageSizeOptions]="[12]"
+          showFirstLastButtons
+          [ngStyle]="{ display: listCustomer.length > 0 ? 'block' : 'none' }"
+          class="custom-paginator"
+        ></mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>
